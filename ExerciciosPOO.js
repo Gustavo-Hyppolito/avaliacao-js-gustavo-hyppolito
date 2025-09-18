@@ -73,56 +73,77 @@
 
 
 
-class funcionario {
-    constructor(salario){
-        this.salario = salario
-    }
-}
+// class funcionario {
+//     constructor(salario){
+//         this.salario = salario
+//     }
+// }
 
-class Gerente extends funcionario {
-    constructor (salario){
-        super(salario)
-    }
-    calcularSalario(){
-        return this.salario + (this.salario * 30/100)
-    }
+// class Gerente extends funcionario {
+//     constructor (salario){
+//         super(salario)
+//     }
+//     calcularSalario(){
+//         return this.salario + (this.salario * 30/100)
+//     }
 
-}
-class desenvolvedor extends funcionario {
-    constructor (salario){
-        super(salario)
-    }
-    calcularSalario(){
-        return this.salario + (this.salario * 20/100)
-    }
-}
-let gerente1 = new Gerente(2000)
-let desenvolvedor1 = new desenvolvedor(2000)
-console.log(`O salario do gerente é ${gerente1.calcularSalario()}`)
-console.log(`O salario do desenvolvedor é ${desenvolvedor1.calcularSalario()}`)
-
-
-
-class ContaBancaria  {
-    constructor(saldo, titular){
-        this.saldo = saldo
-        this.titular = titular  
-    }
-}
-class ContaCorrente extends ContaBancaria {
-    constructor(saldo, titular){
-        super(saldo, titular)
-    }
-}
-class depositar extends ContaBancaria {
-    constructor(saldo, titular){
-        super(saldo, titular)
-    }
-}
-class sacar extends ContaBancaria{
-    constructor(saldo, titular)
+// }
+// class desenvolvedor extends funcionario {
+//     constructor (salario){
+//         super(salario)
+//     }
+//     calcularSalario(){
+//         return this.salario + (this.salario * 20/100)
+//     }
+// }
+// let gerente1 = new Gerente(2000)
+// let desenvolvedor1 = new desenvolvedor(2000)
+// console.log(`O salario do gerente é ${gerente1.calcularSalario()}`)
+// console.log(`O salario do desenvolvedor é ${desenvolvedor1.calcularSalario()}`)
 
 
 
+// class ContaBancaria{
+//     constructor (titular,saldo){
+//         this.titular = titular
+//         this.saldo = saldo
+//     }
 
-}
+//     depositar(){
+//         return "depósito"
+//     }
+
+//     sacar(){
+//         return"saque"
+//     }
+// }
+
+// class ContaCorrente extends ContaBancaria{
+//     constructor(titular, saldo, saque){
+//         super(titular,saldo)
+//         this.saque = saque
+//     }
+//     sacar(){
+//         return this.saque + 2
+//     }
+// }
+
+// class ContaPoupanca extends ContaBancaria{
+//         constructor(titular, saldo, valor){
+//             super(titular, saldo)
+//             this.valor = valor
+//         }      
+//             AtualizarSaldo(valor){
+//                 return this.valor + (this.valor * 5 / 100)
+
+// }
+// }
+
+// let corrente1 = new ContaCorrente ('Ana Carla', 5000, 90)
+// let poupanca1 = new ContaPoupanca ('Kátia', 3000, 30)
+
+// console.log(`A ${corrente1.titular} tem ${corrente1.saldo} de saldo e vai sacar ${corrente1.sacar()}.`)
+
+// console.log(`A ${poupanca1.titular} tem ${poupanca1.saldo} de saldo e tem uma renda de ${poupanca1.AtualizarSaldo()}.`)
+
+
