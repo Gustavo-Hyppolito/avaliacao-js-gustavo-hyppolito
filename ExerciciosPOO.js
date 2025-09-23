@@ -147,3 +147,30 @@
 // console.log(`A ${poupanca1.titular} tem ${poupanca1.saldo} de saldo e tem uma renda de ${poupanca1.AtualizarSaldo()}.`)
 
 
+
+
+class Produto {
+    constructor(nome, preco){
+        this.#nome = nome;
+        this.#preco = preco;
+    }
+
+    get getNome(){
+        return this.#nome;
+    }
+    get getPreco(){
+        return this.#preco;
+    }   
+    set nome(novoNome){
+        this.#nome = novoNome
+    }
+    set preco(novoPreco){
+        if (novoPreco >= 0){
+            console.log("Preço invalido")
+            return
+        }
+        this.#preco = novoPreco
+    }   
+}
+    let produto1 = new Produto("Camiseta",79.90)
+    console.log(`O produto é ${produto1.getNome} e custa ${produto1.getPreco}`);
