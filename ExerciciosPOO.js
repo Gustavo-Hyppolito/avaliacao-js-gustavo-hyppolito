@@ -174,3 +174,5 @@ class Produto {
 }
     let produto1 = new Produto("Camiseta",79.90)
     console.log(`O produto é ${produto1.getNome} e custa ${produto1.getPreco}`);
+
+    
