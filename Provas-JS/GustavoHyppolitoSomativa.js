@@ -93,7 +93,7 @@ class Ativo {
 
     } 
     calcularDepreciacao(){
-        return 0;
+        return this.valorInicial;
     }
 
 
@@ -101,29 +101,35 @@ class Ativo {
 
 class Eletronico extends Ativo { 
 
-    constructor(nome, vidaUtilAnos) { 
+    constructor(nome, valorInicial, dataAquisicao, vidaUtilAnos) { 
 
-        super(nome, 3000, "06/12/08") 
+      super(nome, valorInicial, dataAquisicao); 
 
         this.vidaUtilAnos = vidaUtilAnos;
     
     } 
 
     calcularDepreciacao(){
-        return this.valorInicial / this.vidaUtilAnos;
+        const deprecicao = this.valorInicial / this.vidaUtilAnos;
+        if(deprecicao < 0){
+          return 0
+        } else {
+          return deprecicao
+        }
+
     }
 
         fichaTecnica(){
-            return `O nome do Ativo é: ${this.nome}, seu valor inicial foi de: ${this.valorInicial}, foi adquirido em: ${this.dataAquisicao},`
+            return `O nome do Ativo é: ${this.nome}, seu valor inicial foi de: ${this.valorInicial}, foi adquirido em: ${this.dataAquisicao}, sua vida útil: ${this.vidaUtilAnos} e sua depreciação anual é de:${this.calcularDepreciacao()}`
         }
 
 } 
 
 class Software extends Ativo { 
     
-    constructor(nome, licencaMensal) { 
+    onstructor(nome, valorInicial, dataAquisicao, licencaMensal) { 
 
-        super(nome, 2000, "06/12/08") 
+        super(nome, valorInicial, dataAquisicao); 
 
         this.licencaMensal = licencaMensal ;
     } 
@@ -138,8 +144,8 @@ class Software extends Ativo {
 
 } 
 
- const eletronico1 = new Eletronico ("CLL", 30);
- const software1 = new Software ("Lynux", 300);
+ const eletronico1 = new Eletronico ("CLL", 30, "06/12/2008", 8);
+ const software1 = new Software ("Lynux", 300,"26/12/2008", 7 );
 
 console.log(` ${eletronico1.fichaTecnica()}e sua drepeciação linear é de: ${eletronico1.calcularDepreciacao()} `); 
 console.log(` ${software1.fichaTecnica()}`);
@@ -156,7 +162,7 @@ class Atividade {
 
   calcularCustoTotal() {
    
-    return 0;
+    return this.custoBase;
   }
 }
 
@@ -205,33 +211,29 @@ for(let i = 0; i < Atividades.length; i++) {
 ////////////////////////
 
 class OrcamentoProjeto {
+    #verbaAlocada = 0
+    nome
 
-  #verbaAlocada;
-  nomeProjeto;
-  constructor(nomeProjeto, verbaAlocada) {
-    this.nomeProjeto = nomeProjeto;
-    this.#verbaAlocada  = verbaAlocada;
-  }
-  registrarVerbaInicial(valor){
-    if(valor > 0){
-      this.quantidade += qtd;
-    } else {
-      return "Quantidade inválida";
+    constructor(nome) {
+        this.nome = nome
     }
-   }
-  retiraPedido(qtd){
-    if(qtd <= this.quantidade){
-      this.quantidade -= qtd;
+    registrarValorInicial(valorI) {
+        this.#verbaAlocada += valorI
+        return this.#verbaAlocada
     }
-  }
-  consultarEstoque(){
-    return `Você tem ${this.quantidade} unidades de ${this.nome} em estoque.`
-  }
+    registrarDespesa(valorD) {
+        if (valorD > this.#verbaAlocada) {
+            return "Saldo insuficiente!"
+        } else {
+            return this.#verbaAlocada -= valorD
+        }
+    }
+    consultarSaldo(){
+        return `O saldo é de: ${this.#verbaAlocada}`
+    }
 }
 
-let produto2 = new Almoxarifado("Parafusos", 100);
-console.log(produto1.consultarEstoque());
-produto1.adicionarEstoque(50);
-console.log(produto1.consultarEstoque());
-produto1.retiraPedido(30);
-console.log(produto1.consultarEstoque());
+const orcamento1 = new OrcamentoProjeto("PUBA")
+console.log(orcamento1.registrarValorInicial(120))
+console.log(orcamento1.registrarDespesa(12))
+console.log(orcamento1.consultarSaldo())
